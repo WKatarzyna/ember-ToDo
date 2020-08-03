@@ -1,0 +1,15 @@
+{{outlet}}
+<!--osadzenie dokumentu-->
+<h1>Tasks' list:</h1>
+{{#each model as |task|}}
+    <div class="alert alert-dismissible alert-success">
+        <h4><strong>{{task.title}}</strong></h4>
+        <ul>
+            <li>{{task.description}}</li>
+            <li>{{moment-format task.date 'DD/MM/YYYY'}}</li>
+        </ul>
+        <button {{action 'deleteTask' task.id}} class="btn btn-danger">Delete</button>
+        <button  class="btn btn-secondary">{{#link-to 'tasks.edit' task.id}}Edit{{/link-to}}</button>
+    </div>
+    <hr>
+{{/each}}
